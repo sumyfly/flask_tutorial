@@ -85,7 +85,7 @@
       "module": "flask",
       "cwd": "${workspaceFolder}",
       "env": {
-        "FLASK_APP": "${workspaceFolder}/app/app.py"
+        "FLASK_APP": "${workspaceFolder}/microblog.py"
       },
       "args": [
         "run",
