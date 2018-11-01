@@ -1,6 +1,6 @@
 {
   "python.formatting.provider": "yapf",
-  "python.pythonPath": "/Users/shenglong.qian/qsl/local/tensorflow/bin/python",
+  "python.pythonPath": "/Users/shenglong.qian/qsl/cms/local/flask/bin/python",
   "fileheader.Author": "qsl",
   "fileheader.LastModifiedBy": "qsl",
   "fileheader.tpl": "#!/user/bin/python3\r\n# -*-coding:utf-8-*-\r\n# @Author: {author}\r\n# @Date: {createTime}\r\n# @Last Modified by:   {lastModifiedBy}\r\n# @Last Modified time: {updateTime}\r\n# @Description: Description\r\n \r\n",
