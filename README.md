@@ -1,0 +1,1 @@
+Before run `flask shell`, run `export FLASK_APP=microblog.py` in bash.
