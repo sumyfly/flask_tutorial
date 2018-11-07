@@ -1,5 +1,6 @@
 from app import app, db
 from app.models import User, Post
+from app import cli
 
 
 # adds the database instance and models to the shell session:
