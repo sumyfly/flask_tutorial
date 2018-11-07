@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, session
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -38,9 +38,27 @@ if not app.debug:
     app.logger.info('Microblog startup')
 
 
+@app.context_processor
+def inject_conf_var():
+    d = dict(
+        AVAILABLE_LANGUAGES=app.config['LANGUAGES'],
+        CURRENT_LANGUAGE=session.get(
+            'language',
+            request.accept_languages.best_match(
+                app.config['LANGUAGES'].keys())))
+    return d
+
+
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    try:
+        language = session['language']
+    except KeyError:
+        language = None
+    if language is not None:
+        return language
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys())
 
 
 from app import routes, models, errors

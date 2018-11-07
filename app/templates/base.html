@@ -32,6 +32,15 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
+
+                {% for language in AVAILABLE_LANGUAGES.items() %}
+                {% if CURRENT_LANGUAGE == language[0] %}
+                <li><a href="#">{{ language[1] }}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('set_language', language=language[0]) }}">{{ language[1] }}</a></li>
+                {% endif %}
+                {% endfor %}
+
                 {% else %}
                 <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -40,10 +49,13 @@
         </div>
     </div>
 </nav>
+
 {% endblock %}
 
+{% block testA %}
 <div>
-    Microblog:
+    <h1>why?</h1>
+    <!-- Microblog:
     <a href="{{ url_for('index') }}">Home</a>
     {% if current_user.is_anonyout %}
     <a href="{{ url_for('login') }}">Login</a>
@@ -51,8 +63,10 @@
     <a href="{{ url_for('explore') }}">Explore</a>
     <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
     <a href="{{ url_for('logout') }}">Logout</a>
-    {% endif %}
+    {% endif %} -->
 </div>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     {% with messages = get_flashed_messages() %}

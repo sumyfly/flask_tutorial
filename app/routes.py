@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
 from app.models import User, Post
@@ -8,6 +8,7 @@ from datetime import datetime
 from flask_babel import get_locale
 from flask import g
 from flask_babel import _
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -169,3 +170,9 @@ def explore():
         posts=posts.items,
         next_url=next_url,
         prev_url=prev_url)
+
+
+@app.route('/language/<language>')
+def set_language(language=None):
+    session['language'] = language
+    return redirect(url_for('index'))
