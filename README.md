@@ -14,3 +14,6 @@ https://stackoverflow.com/questions/42393831/how-can-i-choose-the-language-using
 # Static assets
 img.setAttribute('src', "{{ url_for('static', filename='loading.gif') }}")
 
+# Requirements File
+pip freeze > requirements.txt
+pip install -r requirements.txt
