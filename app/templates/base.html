@@ -86,4 +86,17 @@
 {{ super() }}
 {{ moment.include_moment() }}
 {{ moment.lang(g.locale) }}
+<script>
+    (function fn() {
+        var img = document.createElement("img")
+        img.setAttribute('id', 'loading')
+        img.setAttribute('src', "{{ url_for('static', filename='loading.gif') }}")
+        $('body').append(img)
+        var p = document.createElement('p')
+        p.textContent = 'Login... '
+        $('body').append(p)
+        
+    })(window);
+
+</script>
 {% endblock %}
